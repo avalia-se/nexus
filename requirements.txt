@@ -1,0 +1,10 @@
+pydeck
+geopy
+openpyxl
+scikit-learn
+googlemaps
+streamlit-folium
+folium
+seaborn
+xlsxwriter
+ydata-profiling
