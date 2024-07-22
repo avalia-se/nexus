@@ -21,7 +21,7 @@ print(sys.version)
 print("Version info.")
 print(sys.version_info)
 
-image1 = 'avalia-removebg-preview.png'
+image1 = 'images_avalia-removebg-preview.png'
 
 # Function to add heatmap layer to folium map
 def add_heatmap_layer(map_obj, data, column_name, colormap_name, radius=15):
