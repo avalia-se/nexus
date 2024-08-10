@@ -9,3 +9,4 @@ seaborn
 xlsxwriter
 ydata-profiling
 flask
+gunicorn
