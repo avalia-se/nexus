@@ -8,3 +8,4 @@ folium
 seaborn
 xlsxwriter
 ydata-profiling
+flask
