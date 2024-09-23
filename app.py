@@ -11,7 +11,7 @@ html_template = """
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Landing Page com Menu de Topo</title>
+    <title>avalia.se - o valor do seu bem</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
     body {
@@ -230,7 +230,7 @@ html_template = """
         <li>Poucos recursos (sistemas).</li>
         <li>Dificuldade de manter um banco de dados atualizado.</li>
         <div class="app-buttons" style="display: flex; flex-wrap: wrap; gap: 10px;">
-          <a href="#dashboard" class="app-button" style="flex: 1 1 calc(20% - 10px);">
+          <a href="https://fschwartzer-geo-dash-tabs.hf.space" target="_blank" class="app-button" style="flex: 1 1 calc(20% - 10px);">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
               <circle cx="12" cy="12" r="10"></circle>
               <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 15.3 0 0 0 0 20"></path>
@@ -238,7 +238,7 @@ html_template = """
             Dashboard Geoespacial
           </a>
 
-          <a href="#regressao" class="app-button" style="flex: 1 1 calc(20% - 10px);">
+          <a href="https://davidsb-avalia-se-rl-tabs.hf.space" target="_blank" class="app-button" style="flex: 1 1 calc(20% - 10px);">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
               <line x1="3" y1="21" x2="21" y2="21"></line>
               <line x1="3" y1="21" x2="3" y2="3"></line>
@@ -249,7 +249,7 @@ html_template = """
             </svg>
             Regressão Linear
           </a>
-         <a href="#evolutivo" class="app-button" style="flex: 1 1 calc(20% - 10px);">
+         <a href="https://davidsb-avalia-evo.hf.space" target="_blank" class="app-button" style="flex: 1 1 calc(20% - 10px);">
            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
             <!-- Desenho simplificado do edifício com teto reto -->
             <polyline points="6,22 6,8 18,8 18,22"></polyline>
@@ -265,7 +265,7 @@ html_template = """
            </svg>
            Método Evolutivo
          </a>
-          <a href="#bensmoveis" class="app-button" style="flex: 1 1 calc(20% - 10px);">
+          <a href="https://fschwartzer-bens-moveis-vision.hf.space" target="_blank" class="app-button" style="flex: 1 1 calc(20% - 10px);">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
               <line x1="8" y1="21" x2="16" y2="21"></line>
