@@ -11,7 +11,7 @@ html_template = """
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>avalia.se - o valor do seu bem</title>
+    <title>Landing Page com Menu de Topo</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
     body {
@@ -159,21 +159,23 @@ html_template = """
       <a href="#solucao">Solução</a>
       <a href="#aplicativos">Aplicativos</a>
       <a href="#municipios">Municípios</a>
-      <a href="#capacitacao">Capacitação</a>
+      <a href="#servicos">Serviços</a>
       <a href="#contato">Contato</a>
     </div>
 
 <!-- Conteúdo principal -->
 <div class="main-content">
     <div id="inicio" class="container início-content">
-        <img src="{{ url_for('static', filename='avalia.png') }}" alt="Logo Avalia" style="display: block; margin: 0 auto 10px auto; width: 450px; height: auto;"> <!-- Ajuste na margem inferior -->
+        <img src="{{ url_for('static', filename='avalia.png') }}" alt="Logo Avalia" style="display: block; margin: 0 auto 10px auto; width: 400px; height: auto;"> <!-- Ajuste na margem inferior -->
         <h2>Sobre o avalia.se</h2>
         <p>O avalia.se é uma empresa de tecnologia e serviços para avaliação de bens.</p>
         <p>Somos obcecados por entender o mercado imobiliário e existimos para tornar os municípios responsivos na avaliação de imóveis.</p>
         <p>Buscamos agilizar as avaliações de imóveis nos municípios, por meio da expertise técnica e da tecnologia, visando beneficiar tanto às prefeituras quanto aos contribuintes.</p>
         <p>Para isso, contamos com profissionais com vasto conhecimento de avaliações e de serviço público, que valorizam acima de tudo o rigor técnico, o conhecimento do mercado e a imparcialidade.</p>
         <p>O mais importante para o avalia.se é o “valor do seu bem”.<p>
-
+    <h2>Sobre a Engenharia de Avaliações</h2>
+        <p>"A Engenharia de Avaliações é uma área interdisciplinar que combina conhecimentos de engenharia, arquitetura e ciências sociais, exatas e naturais para determinar o valor de bens imóveis, direitos associados e custos de reprodução. Essencial para o mercado imobiliário, essa especialidade serve a uma ampla gama de agentes, incluindo imobiliárias, bancos, compradores, vendedores, seguradoras, o judiciário, fundos de pensão, incorporadoras, construtoras, investidores e governos locais. (Dantas, 2012)."</p>
+        
     </div>
     <div id="contexto" class="container contexto-content">
       <h2>Contexto</h2>
@@ -199,14 +201,20 @@ html_template = """
       <li>Desapropriar ofertando pouco, cobrar impostos (Itbi ou Iptu) cobrando muito, afeta a percepção de transparência.</li>
       </ul>
       
-    <div id="processo" class="container processo-content">
-      <h2>Processo Avaliatório - O que é?</h2>
-      <p>De forma simplificada, são as etapas pelas quais o avaliador deve passar para produzir uma avaliação, conforme gere a NBR 14.653.</p>
-      <img src="{{ url_for('static', filename='processo.png') }}" alt="processo" style="display: block; margin: 20px auto; width: 900px; height: auto;">
-      <p>O fluxo do processo avaliatório necessita uma série de sistemas que normalmente não são integrados.</p>
+    <!-- Processo -->
+     <div id="processo" class="container processo-content">
+       <h2>Processo Avaliatório - O que é?</h2>
+       <p>De forma simplificada, são as etapas pelas quais o avaliador deve passar para produzir uma avaliação, conforme a Norma.</p>
+       <ul>
+         <li><strong>ABNT NBR 14653-1:2001</strong> – Avaliação de bens – Parte 1: Procedimentos gerais - Estabelece os princípios e procedimentos gerais para a avaliação de bens, sendo aplicável a todos os tipos de bens e finalidades.</li>
+         <li><strong>ABNT NBR 14653-2:2011</strong> – Avaliação de bens – Parte 2: Imóveis urbanos - Foca nos critérios e métodos específicos para avaliação de imóveis urbanos.</li>
+         <li><strong>ABNT NBR 14653-3:2004</strong> – Avaliação de bens – Parte 3: Imóveis rurais - Define os procedimentos para avaliação de imóveis rurais, abordando aspectos como a terra, benfeitorias e componentes relacionados à atividade rural.</li>
+       </ul>
+       <img src="{{ url_for('static', filename='processo.png') }}" alt="processo" style="display: block; margin: 20px auto; width: 900px; height: auto;">
+       <p>O fluxo do processo avaliatório necessita uma série de sistemas que normalmente não são integrados.</p>
        <img src="{{ url_for('static', filename='sistemas.png') }}" alt="sistemas" style="display: block; margin: 20px auto; width: 900px; height: auto;">
-    </div>
-      
+     </div>
+ 
     <!-- Solução -->
     <div id="solucao" class="container solucao-content">
       <h2>Solução</h2>
@@ -270,7 +278,7 @@ html_template = """
      <!-- Municípios -->
       <div id="municipios" class="container municipios-content">
         <h2>Municípios</h2>
-        <p>Prefeitura Municipal de Lajeado</p>
+        <p><strong><strong>Prefeitura Municipal de Lajeado<strong></p>
         <img src="{{ url_for('static', filename='lajeado.png') }}" alt="lajeado" style="display: block; margin: 20px auto; width: 200px; height: auto;">
         <p>Em 2023, o avalia.se firmou uma parceria academica com o Município de Lajeado com a intenção de conhecer melhor a realidade do município no que se refere a avaliação de imóveis e propor soluções.</p>
         <p>Inicialmente, foi feita uma entrevista aberta com o Eng. Franki Bersh, responsável pela avaliações do município.<p>
@@ -278,17 +286,30 @@ html_template = """
         <li>Dados de mercado atualizados e geolocalizados.</li>
         <li>Variável renda IBGE por meio de uma superfície (processo de krigagem).</li>
         <li>Aplicativos de cálculo.</li>
-        <p>Resultados:<p>
         
+        <p>Resultados:</p>
+         <ul>
+          <li><strong><em>Comparando o tempo total empregado na elaboração de algumas avaliações, utilizando os aplicativos de avaliações, scrapping de dados de mercado e variável de localização elaborada com interpolação da Renda Bairro fornecida pelo IBGE, com avaliações similares feitas anteriormente sem estas ferramentas, estimo que o tempo médio por laudo reduziu aproximadamente 45% (quarenta e cinco por cento).</em></strong></li>
+         </ul>
+          <p style="text-align: right;"><strong><em>Eng. Franki Bersh (Responsável pelas avaliações no Município de Lajeado/RS).</em></strong></p> 
       </div> 
       
-     <!-- Capacitação -->
-      <div id="capacitacao" class="container capacitacao-content">
-        <h2>Capacitação</h2>
-        <p>Entendemos que a capacitação dos profissionais é essencial para garantir a correta aplicação das ferramentas e metodologias que desenvolvemos. Por isso, oferecemos treinamentos e workshops personalizados para que os municípios possam maximizar o uso de nossa plataforma e aprimorar o conhecimento técnico de seus avaliadores.</p>
-        <p>Nosso objetivo é capacitar equipes para que estejam sempre atualizadas com as melhores práticas do mercado imobiliário e com as ferramentas mais recentes de avaliação de imóveis, promovendo uma cultura de aprendizado contínuo.</p>
-      </div>      
-      <div id="contato" class="container">
+     <!-- Serviços -->
+     <div id="servicos" class="container servicos-content">      
+       <h2>Consultoria</h2>
+       <p style="margin-bottom: 20px;">Oferecemos uma consultoria especializada para ajudar os municípios a otimizar seus processos de avaliação de imóveis. Além dos aplicativos, disponibilizamos os serviços abaixo com o objetivo de proporcionar uma gestão completa das avaliações, garantindo eficiência, precisão e transparência em todas as etapas do processo.</p>
+       <ul>
+         <li style="margin-bottom: 20px;"><strong>Gestão das Avaliações:</strong> Organização sistemática de todo o processo de avaliação, desde o cadastro até a geração de laudos técnicos. Garantimos que cada etapa seja devidamente documentada e arquivada.</li>
+         <li style="margin-bottom: 20px;"><strong>Organização de Nomes de Modelos e Laudos:</strong> Implementamos um sistema de padronização para facilitar a identificação de modelos e laudos, permitindo uma busca mais ágil e eficiente, além de reduzir erros na gestão dos documentos.</li>
+         <li style="margin-bottom: 20px;"><strong>Catálogo de Modelos por Região:</strong> Desenvolvemos um catálogo com os modelos de avaliação segmentados por região geográfica, otimizando a aplicação das metodologias mais adequadas às especificidades locais.</li>
+         <li style="margin-bottom: 20px;"><strong>Criação de Modelos de Machine Learning:</strong> Nossa equipe de especialistas elabora modelos preditivos utilizando técnicas avançadas de Machine Learning, com o objetivo de automatizar e aprimorar a precisão das avaliações de imóveis.</li>
+         <li style="margin-bottom: 20px;"><strong>Integração com o Cadastro de Imóveis:</strong> Facilitamos a integração dos nossos modelos e soluções com o sistema de cadastro de imóveis do município, permitindo um fluxo contínuo e eficiente de informações, reduzindo a necessidade de atualizações manuais.</li>
+         <li style="margin-bottom: 20px;"><strong>Capacitação e Treinamento:</strong> Oferecemos capacitação técnica contínua para as equipes municipais, garantindo que estejam sempre atualizadas com as melhores práticas e ferramentas disponíveis no mercado de avaliações imobiliárias.</li>
+       </ul>
+     </div>
+     
+     <!-- Contato -->
+     <div id="contato" class="container">
       <h2>Entre em contato conosco</h2>
         <p><strong>Email:</strong> <a href="mailto:ai.avalia.se@gmail.com">ai.avalia.se@gmail.com</a></p>
         <p><strong>Celular:</strong> <a href="tel:+5551981776636">+55 (51) 98177-6636</a></p>
@@ -317,7 +338,6 @@ def index():
     return render_template_string(html_template)
 
 def run_app():
-    #app.run(port=5000)
     app.run()
 
 # Rodar o Flask no Jupyter
