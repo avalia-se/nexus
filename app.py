@@ -317,7 +317,8 @@ def index():
     return render_template_string(html_template)
 
 def run_app():
-    app.run(port=5000)
+    #app.run(port=5000)
+    app.run()
 
 # Rodar o Flask no Jupyter
 flask_thread = threading.Thread(target=run_app)
