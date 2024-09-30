@@ -15,6 +15,12 @@ html_template = """
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+    html, body {
+        height: 100%; /* Garante que o corpo da página ocupe 100% da altura da janela */
+        margin: 0;
+        padding: 0;
+    }
+
     body {
         font-family: 'Quicksand', sans-serif;
         margin: 0;
@@ -23,7 +29,10 @@ html_template = """
         scroll-behavior: smooth;
         position: relative;
         color: #000000;
+        display: flex;
+        flex-direction: column;
     }
+
     .topnav {
         overflow: hidden;
         background-color: #000000;
@@ -36,6 +45,7 @@ html_template = """
         height: 50px;
         z-index: 1000;
       }
+
       .topnav img {
         position: absolute;
         left: 10px;
@@ -44,6 +54,7 @@ html_template = """
         width: 150px;
         height: auto;
       }
+
       .topnav a {
         float: none;
         display: block;
@@ -53,20 +64,20 @@ html_template = """
         text-decoration: none;
         font-size: 18px;
       }
+
       .topnav a:hover {
         background-color: #495057;
       }
       
-
       .main-content {
-        padding: 20px;
+        padding: 100px;
         margin-top: 100px;
+        flex: 1 0 auto; /* O conteúdo principal pode crescer conforme necessário */
       }
-      
+
       h2 {scroll-margin-top: 100px; /* Define a margem superior para evitar o corte dos títulos */}
       
-        /* Adiciona um padding-top para os containers */
-        .container {padding-top: 60px; /* Adiciona um padding para compensar a barra de navegação */}
+      .container {padding-top: 100px; /* Adiciona um padding para compensar a barra de navegação */}
 
       h1 {
         color: #000000;
@@ -85,7 +96,7 @@ html_template = """
       .caixa-preta {
           background-color: gray;
           color: white;
-          padding: 20px;
+          padding: 15px;
           border-radius: 10px; /* Define os cantos arredondados */
           width: 300px; /* Define a largura da caixa */
           text-align: center; /* Centraliza o texto */
@@ -95,17 +106,20 @@ html_template = """
       .footer {
         background-color: #000000;
         color: #ffffff;
-        padding: 20px 10px;
+        padding: 5px 5px;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 40px; /* Adiciona espaçamento acima da barra */
+        margin-top: 0px;
+        flex-shrink: 0; /* O rodapé não encolhe, mantendo-se fixo no final */
       }
+
       .footer img {
         width: 150px;
         height: auto;
       }
+
       .footer .right {
         text-align: right;
       }
@@ -117,20 +131,36 @@ html_template = """
         width: 100vw;
         margin-left: calc(-50vw + 50%);
       }
+      
+      .bg-black {background-color: #000000 !important;}
+      
+      .navbar-toggler-icon {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");}
+
+      .navbar-toggler {border-color: rgba(255, 255, 255, 0.1); /* Bordas claras ao redor do botão */}
+        
     </style>
   </head>
   <body>
 
     <!-- Menu de topo -->
-    <div class="topnav">
-      <img src="{{ url_for('static', filename='avalia_b.png') }}" alt="Logo" class="logo">
-      <a href="#contexto">Contexto</a>
-      <a href="#processo">Processo Avaliatório</a>
-      <a href="#solucao">Solução</a>
-      <a href="#aplicativos">Aplicativos</a>
-      <a href="#municipios">Municípios</a>
-      <a href="#servicos">Serviços</a>
-    </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-black fixed-top">
+      <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='avalia_b.png') }}" alt="Logo Avalia" width="150" height="auto">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="#contexto">Contexto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#processo">Processo Avaliatório</a></li>
+          <li class="nav-item"><a class="nav-link" href="#solucao">Solução</a></li>
+          <li class="nav-item"><a class="nav-link" href="#aplicativos">Aplicativos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#municipios">Municípios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Carrossel de banners -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -144,7 +174,7 @@ html_template = """
             <div class="carousel-item active">
               <img src="{{ url_for('static', filename='resized_banner1_cut.jpg') }}" class="d-block w-100 banner-img" alt="Banner 1">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
-                <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 20px; display: inline-block;">
+                <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
                   <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">A avalia.se é uma empresa de tecnologia e serviços para avaliação de bens.</h5>
                 </div>
               </div>
@@ -153,7 +183,7 @@ html_template = """
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='resized_banner2.jpg') }}" class="d-block w-100 banner-img" alt="Banner 2">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
-                <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 20px; display: inline-block;">
+                <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
                   <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Queremos entender o mercado imobiliário e tornar os municípios responsivos na avaliação de imóveis.</h5>
                 </div>
               </div>
@@ -162,7 +192,7 @@ html_template = """
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='resized_banner3.jpg') }}" class="d-block w-100 banner-img" alt="Banner 3">
               <div class="carousel-caption d-none d-md-block" style="top: 55%; transform: translateY(-50%);">
-                <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 20px; display: inline-block;">
+                <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
                   <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Buscamos agilizar as avaliações de imóveis nos municípios, por meio da expertise técnica e da tecnologia.</h5>
                 </div>
               </div>
@@ -190,7 +220,7 @@ html_template = """
     <style>
       /* Define a altura máxima das imagens no carrossel */
       .banner-img {
-        max-height: 650px;
+        max-height: 620px;
         object-fit: cover; /* Garante que a imagem mantenha suas proporções */
       }
     </style>
@@ -218,9 +248,9 @@ html_template = """
     <!-- Processo -->
      <div id="processo" class="container processo-content">
        <h2>Processo Avaliatório - O que é?</h2>
-       <img src="{{ url_for('static', filename='processo.png') }}" alt="processo" style="display: block; margin: 20px auto; width: 900px; height: auto;">
+       <img src="{{ url_for('static', filename='processo.png') }}" class="img-fluid mx-auto d-block" alt="processo" style="display: block; margin: 20px auto; width: 900px; height: auto;">
        <p>O fluxo do processo avaliatório necessita uma série de sistemas que normalmente não são integrados.</p>
-       <img src="{{ url_for('static', filename='sistemas.png') }}" alt="sistemas" style="display: block; margin: 20px auto; width: 900px; height: auto;">
+       <img src="{{ url_for('static', filename='sistemas.png') }}" class="img-fluid mx-auto d-block" alt="sistemas" style="display: block; margin: 20px auto; width: 900px; height: auto;">
      </div>
  
     <!-- Solução com fundo cinza claro e ocupando toda a largura da página -->
@@ -298,6 +328,8 @@ html_template = """
             <span style="flex-grow: 1; text-align: right;">Bens Móveis</span>
           </a>
         </div>
+        <ul>
+        </ul>
 
       </div>
     </div>
@@ -339,15 +371,29 @@ html_template = """
      </div>
      
     <!-- Barra preta no rodapé, visível no final da rolagem -->
-    <div class="footer full-width-section" style="background-color: #000000;">
-      <div class="container">
-        <img src="{{ url_for('static', filename='avalia_b.png') }}" alt="Logo Avalia">
-        <div class="right">
+    <div class="footer full-width-section" style="background-color: #000000; padding: 0px;">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="left logo-container">
+          <img src="{{ url_for('static', filename='avalia_b.png') }}" alt="Logo Avalia" style="height: 42px;">
+        </div>
+
+        <div class="right" style="text-align: right;">
           <p>Email: <a href="mailto:ai.avalia.se@gmail.com" style="color: #FFC000; text-decoration: none;">ai.avalia.se@gmail.com</a></p>
           <p>Porto Alegre/RS</p>
           <p>Brasil</p>
         </div>
       </div>
+    </div>
+
+    <style>
+      /* Media query para esconder o logotipo em telas pequenas */
+      @media (max-width: 480px) {
+        .logo-container img {
+          display: none;
+        }
+      }
+    </style>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
