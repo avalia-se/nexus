@@ -18,7 +18,7 @@ html_template = """
     html, body {
         height: 100%; /* Garante que o corpo da página ocupe 100% da altura da janela */
         margin: 0;
-        padding: 0;
+        padding: 0px;
     }
 
     body {
@@ -74,10 +74,11 @@ html_template = """
         margin-top: 100px;
         flex: 1 0 auto; /* O conteúdo principal pode crescer conforme necessário */
       }
-
-      h2 {scroll-margin-top: 100px; /* Define a margem superior para evitar o corte dos títulos */}
       
-      .container {padding-top: 100px; /* Adiciona um padding para compensar a barra de navegação */}
+      h2 {scroll-margin-top: 50px; /* Define a margem superior para evitar o corte dos títulos */}
+
+      .container {padding-top: 70px; /* Adiciona um padding para compensar a barra de navegação */}
+      
 
       h1 {
         color: #000000;
@@ -137,7 +138,34 @@ html_template = """
       .navbar-toggler-icon {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");}
 
       .navbar-toggler {border-color: rgba(255, 255, 255, 0.1); /* Bordas claras ao redor do botão */}
-        
+      
+      .servicos-columns {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .servico-item {
+        flex: 1;
+        margin: 0 10px;
+        padding: 20px;
+        background-color: #f5f5f5; /* cor de fundo para diferenciar cada coluna */
+        border-radius: 8px;
+      }
+
+      .servico-item p {
+        margin-top: 10px;
+      }
+      
+     /* Remover o padding e a margem que causam o espaço extra entre as seções */
+      .main-content {
+        padding-top: 0;
+        margin-top: 0;
+      }
+
+      .full-width-section {
+        padding-top: 0px;
+        margin-top: 0px;
+      }
     </style>
   </head>
   <body>
@@ -163,7 +191,7 @@ html_template = """
     </nav>
 
     <!-- Carrossel de banners -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -175,7 +203,7 @@ html_template = """
               <img src="{{ url_for('static', filename='resized_banner1_cut.jpg') }}" class="d-block w-100 banner-img" alt="Banner 1">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
                 <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
-                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">A avalia.se é uma empresa de tecnologia e serviços para avaliação de bens.</h5>
+                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">A avalia.se é uma empresa de tecnologia e serviços para avaliação de bens</h5>
                 </div>
               </div>
             </div>
@@ -184,7 +212,7 @@ html_template = """
               <img src="{{ url_for('static', filename='resized_banner2.jpg') }}" class="d-block w-100 banner-img" alt="Banner 2">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
                 <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
-                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Queremos entender o mercado imobiliário e tornar os municípios responsivos na avaliação de imóveis.</h5>
+                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Queremos entender o mercado imobiliário e tornar os municípios responsivos na avaliação de imóveis</h5>
                 </div>
               </div>
             </div>
@@ -193,7 +221,7 @@ html_template = """
               <img src="{{ url_for('static', filename='resized_banner3.jpg') }}" class="d-block w-100 banner-img" alt="Banner 3">
               <div class="carousel-caption d-none d-md-block" style="top: 55%; transform: translateY(-50%);">
                 <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
-                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Buscamos agilizar as avaliações de imóveis nos municípios, por meio da expertise técnica e da tecnologia.</h5>
+                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Buscamos agilizar as avaliações de imóveis nos municípios por meio da expertise técnica e da tecnologia</h5>
                 </div>
               </div>
             </div>
@@ -201,7 +229,7 @@ html_template = """
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='resized_banner4.jpg') }}" class="d-block w-100 banner-img" alt="Banner 4">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
-                <h5 style="font-family: 'Quicksand', sans-serif; color: #554E39; font-size: 36px">O mais importante para o avalia.se é o “valor do seu bem”.</h5>
+                <h5 style="font-family: 'Quicksand', sans-serif; color: #554E39; font-size: 36px">O mais importante para o avalia.se é <br><strong>o valor do seu bem</strong></h5>
                 </div>
               </div>
             </div>
@@ -257,9 +285,9 @@ html_template = """
     <div id="solucao" class="full-width-section">
         <div class="container">
           <h2>Solução</h2>
-          <p>Queremos proporcionar aos municípios uma solução que facilite a tomada de decisões e o cumprimento de normas legais, maximizando a transparência no processo de avaliação imobiliária.</p>
-          <p>Nossas qualidades são a “agilidade” no processo, a “acurácia” nos resultados e a “atualização” permanente das soluções. Assim, nossa proposta é minimizar a subjetividade, a imprecisão e a morosidade nos processos de avaliações de imóveis.</p>
-          <p>Como diferencial, a plataforma conta com recursos de inteligência artificial e tem como objetivo contemplar as etapas do processo avaliatório, desde a coleta de dados até a elaboração do laudo técnico, tornando-o ágil e assertivo.</p>
+          <p><strong>Todas as etapas do processo de avaliação, da coleta de dados à elaboração do laudo técnico, em um único lugar.</strong></p>
+          <p><strong>IA</strong></p>
+          <p>Nossa plataforma conta com recursos de inteligência artificial, com o intuito de agilizar os processos, acurar os resultados e manter sempre atualizadas as bases de dados e as soluções.</p>
         </div>
       </div>
 
@@ -357,17 +385,25 @@ html_template = """
       </div>
       
      <!-- Serviços -->
+     <!-- Serviços -->
      <div id="servicos" class="container servicos-content">      
        <h2>Consultoria</h2>
-       <p style="margin-bottom: 20px;">Oferecemos uma consultoria especializada para ajudar os municípios a otimizar seus processos de avaliação de imóveis. Além dos aplicativos, disponibilizamos os serviços abaixo com o objetivo de proporcionar uma gestão completa das avaliações, garantindo eficiência, precisão e transparência em todas as etapas do processo.</p>
-       <ul>
-         <li style="margin-bottom: 20px;"><strong>Gestão das Avaliações:</strong> Organização sistemática de todo o processo de avaliação, desde o cadastro até a geração de laudos técnicos. Garantimos que cada etapa seja devidamente documentada e arquivada.</li>
-         <li style="margin-bottom: 20px;"><strong>Organização de Nomes de Modelos e Laudos:</strong> Implementamos um sistema de padronização para facilitar a identificação de modelos e laudos, permitindo uma busca mais ágil e eficiente, além de reduzir erros na gestão dos documentos.</li>
-         <li style="margin-bottom: 20px;"><strong>Catálogo de Modelos por Região:</strong> Desenvolvemos um catálogo com os modelos de avaliação segmentados por região geográfica, otimizando a aplicação das metodologias mais adequadas às especificidades locais.</li>
-         <li style="margin-bottom: 20px;"><strong>Criação de Modelos de Machine Learning:</strong> Nossa equipe de especialistas elabora modelos preditivos utilizando técnicas avançadas de Machine Learning, com o objetivo de automatizar e aprimorar a precisão das avaliações de imóveis.</li>
-         <li style="margin-bottom: 20px;"><strong>Integração com o Cadastro de Imóveis:</strong> Facilitamos a integração dos nossos modelos e soluções com o sistema de cadastro de imóveis do município, permitindo um fluxo contínuo e eficiente de informações, reduzindo a necessidade de atualizações manuais.</li>
-         <li style="margin-bottom: 20px;"><strong>Capacitação e Treinamento:</strong> Oferecemos capacitação técnica contínua para as equipes municipais, garantindo que estejam sempre atualizadas com as melhores práticas e ferramentas disponíveis no mercado de avaliações imobiliárias.</li>
-       </ul>
+       <p style="margin-bottom: 20px;"><strong>Oferecemos uma consultoria especializada para ajudar os municípios a otimizar seus processos de avaliação de imóveis. Além dos aplicativos, disponibilizamos os serviços abaixo com o objetivo de proporcionar uma gestão completa das avaliações.</strong></p>
+
+       <div class="servicos-columns">
+         <div class="servico-item">
+           <strong>Gestão das Avaliações</strong>
+           <p>Organização sistemática de todo o processo de avaliação, desde o cadastro até a geração de laudos técnicos. Organização, padronização e espacialização de modelos e laudos.</p>
+         </div>
+         <div class="servico-item">
+           <strong>Modelos de Machine Learning</strong>
+           <p>Elaboração de modelos preditivos utilizando técnicas avançadas de Machine Learning, com o objetivo de automatizar e aprimorar a precisão das avaliações de imóveis.</p>
+         </div>
+         <div class="servico-item">
+           <strong>Capacitação e Treinamento</strong>
+           <p>Capacitação técnica contínua para as equipes municipais, garantindo que estejam sempre atualizadas com as melhores práticas e ferramentas disponíveis no mercado de avaliações imobiliárias.</p>
+         </div>
+       </div>
      </div>
      
     <!-- Barra preta no rodapé, visível no final da rolagem -->
