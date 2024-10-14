@@ -11,6 +11,8 @@ html_template = """
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='ia_y.png') }}" sizes="128x128" type="image/png">
     <title>avalia.se - o valor do seu bem</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -19,12 +21,10 @@ html_template = """
         height: 100%; /* Garante que o corpo da página ocupe 100% da altura da janela */
         margin: 0;
         padding: 0px;
+        font-family: 'Quicksand', sans-serif; /* Define a fonte Quicksand para toda a página */
     }
 
     body {
-        font-family: 'Quicksand', sans-serif;
-        margin: 0;
-        padding: 0;
         background-color: #f8f9fa;
         scroll-behavior: smooth;
         position: relative;
@@ -75,32 +75,24 @@ html_template = """
         flex: 1 0 auto; /* O conteúdo principal pode crescer conforme necessário */
       }
       
-      h2 {scroll-margin-top: 50px; /* Define a margem superior para evitar o corte dos títulos */}
+      h2 {scroll-margin-top: 50px; /* Define a margem superior para evitar o corte dos títulos */ }
 
-      .container {padding-top: 70px; /* Adiciona um padding para compensar a barra de navegação */}
+      .container {padding-top: 70px; /* Adiciona um padding para compensar a barra de navegação */ }
       
-
-      h1 {
+      h1, h2, h5, strong {
         color: #000000;
         font-weight: 500;
-        text-align: center;
+        text-align: left; /* Alinhando os títulos à esquerda */
       }
 
-      /* Adicione o CSS para os ícones SVG aqui */
-      .app-button svg {
-          width: 24px;
-          height: 24px;
-          margin-right: 10px;
-          stroke: #000; /* Define a cor do ícone */
-      }
-      
+
       .caixa-preta {
           background-color: gray;
           color: white;
           padding: 15px;
-          border-radius: 10px; /* Define os cantos arredondados */
-          width: 300px; /* Define a largura da caixa */
-          text-align: center; /* Centraliza o texto */
+          border-radius: 10px;
+          width: 300px;
+          text-align: center;
       }
 
       /* Estilo da barra preta no rodapé */
@@ -113,7 +105,7 @@ html_template = """
         justify-content: space-between;
         align-items: center;
         margin-top: 0px;
-        flex-shrink: 0; /* O rodapé não encolhe, mantendo-se fixo no final */
+        flex-shrink: 0;
       }
 
       .footer img {
@@ -135,9 +127,11 @@ html_template = """
       
       .bg-black {background-color: #000000 !important;}
       
-      .navbar-toggler-icon {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");}
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      }
 
-      .navbar-toggler {border-color: rgba(255, 255, 255, 0.1); /* Bordas claras ao redor do botão */}
+      .navbar-toggler {border-color: rgba(255, 255, 255, 0.1); }
       
       .servicos-columns {
         display: flex;
@@ -148,7 +142,7 @@ html_template = """
         flex: 1;
         margin: 0 10px;
         padding: 20px;
-        background-color: #f5f5f5; /* cor de fundo para diferenciar cada coluna */
+        background-color: #f5f5f5;
         border-radius: 8px;
       }
 
@@ -156,7 +150,6 @@ html_template = """
         margin-top: 10px;
       }
       
-     /* Remover o padding e a margem que causam o espaço extra entre as seções */
       .main-content {
         padding-top: 0;
         margin-top: 0;
@@ -165,6 +158,13 @@ html_template = """
       .full-width-section {
         padding-top: 0px;
         margin-top: 0px;
+      }
+
+      /* Media query para esconder o logotipo em telas pequenas */
+      @media (max-width: 480px) {
+        .logo-container img {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -175,17 +175,16 @@ html_template = """
       <a class="navbar-brand" href="#">
         <img src="{{ url_for('static', filename='avalia_b.png') }}" alt="Logo Avalia" width="150" height="auto">
       </a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="#contexto">Contexto</a></li>
-          <li class="nav-item"><a class="nav-link" href="#processo">Processo Avaliatório</a></li>
-          <li class="nav-item"><a class="nav-link" href="#solucao">Solução</a></li>
-          <li class="nav-item"><a class="nav-link" href="#aplicativos">Aplicativos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#municipios">Municípios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cenario">Cenário</a></li>
           <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#aplicativos">Aplicativos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cases">Cases</a></li>
         </ul>
       </div>
     </nav>
@@ -203,7 +202,7 @@ html_template = """
               <img src="{{ url_for('static', filename='resized_banner1_cut.jpg') }}" class="d-block w-100 banner-img" alt="Banner 1">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
                 <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
-                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">A avalia.se é uma empresa de tecnologia e serviços para avaliação de bens</h5>
+                  <h5 style="color: #FFC000; font-size: 36px">A avalia.se é uma empresa de tecnologia e serviços para avaliação de bens</h5>
                 </div>
               </div>
             </div>
@@ -212,16 +211,16 @@ html_template = """
               <img src="{{ url_for('static', filename='resized_banner2.jpg') }}" class="d-block w-100 banner-img" alt="Banner 2">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
                 <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
-                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Queremos entender o mercado imobiliário e tornar os municípios responsivos na avaliação de imóveis</h5>
+                  <h5 style="color: #FFC000; font-size: 36px">Buscamos entender o mercado imobiliário para tornar responsivos os municípios na avaliação de imóveis</h5>
                 </div>
               </div>
             </div>
 
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='resized_banner3.jpg') }}" class="d-block w-100 banner-img" alt="Banner 3">
-              <div class="carousel-caption d-none d-md-block" style="top: 55%; transform: translateY(-50%);">
+              <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
                 <div style="background-color: rgba(0, 0, 0, 0.8); border-radius: 20px; padding: 15px; display: inline-block;">
-                  <h5 style="font-family: 'Quicksand', sans-serif; color: #FFC000; font-size: 36px">Buscamos agilizar as avaliações de imóveis nos municípios por meio da expertise técnica e da tecnologia</h5>
+                  <h5 style="color: #FFC000; font-size: 36px">Agilizamos os processos de avaliação por meio da tecnologia</h5>
                 </div>
               </div>
             </div>
@@ -229,8 +228,11 @@ html_template = """
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='resized_banner4.jpg') }}" class="d-block w-100 banner-img" alt="Banner 4">
               <div class="carousel-caption d-none d-md-block" style="top: 60%; transform: translateY(-50%);">
-                <h5 style="font-family: 'Quicksand', sans-serif; color: #554E39; font-size: 36px">O mais importante para o avalia.se é <br><strong>o valor do seu bem</strong></h5>
-                </div>
+                <h5 style="color: #554E39; font-size: 45px;">
+                  O mais importante para nós da avalia.se é 
+                  <strong style="color: #b38b00;">o valor do seu bem</strong>
+                </h5>
+
               </div>
             </div>
         </div>
@@ -249,163 +251,324 @@ html_template = """
       /* Define a altura máxima das imagens no carrossel */
       .banner-img {
         max-height: 620px;
-        object-fit: cover; /* Garante que a imagem mantenha suas proporções */
+        object-fit: cover;
       }
     </style>
 
 <!-- Conteúdo principal -->
 <div class="main-content">
-    <!-- Apenas o div "contexto" terá o fundo cinza claro e ocupará toda a largura da página -->
-    <div id="contexto" class="container-fluid contexto-content full-width-section">
-      <div class="container">
-        <h2>Contexto</h2>
-        <ul>
-        <li>A avaliação de imóveis, essencial para os municípios, é um processo complexo e normatizado que exige soluções tecnológicas eficientes e capacitação contínua para lidar com o grande volume de informações envolvido.</li>
-        </ul>
-        <h2>Desafios que muitos municípios enfrentam</h2>
-        <ul>
-        <li>A alta demanda, a falta de profissionais especializados e de sistemas adequados, além da dificuldade em manter dados atualizados e integrar diferentes ferramentas, são grandes desafios para a gestão de avaliações imobiliárias.</li>
-        </ul>     
-        <h2>Possíveis consequências</h2>
-        <ul>
-        <li>A desatualização de plantas de valores, indenizações inadequadas e a falta de precisão nas aquisições e cobranças geram prejuízos financeiros, processos judiciais e comprometem a transparência pública.</li>
-        </ul>
+<!-- Apenas o div "cenario" terá o fundo cinza claro e ocupará toda a largura da página -->
+<div id="cenario" class="container-fluid contexto-content full-width-section">
+  <div class="container">
+    <h2 style="color: black; font-weight: bold;">Cenário</h2>
+    <div class="servicos-columns" style="display: flex; justify-content: space-between; gap: 20px;">
+      <!-- Desafio -->
+      <div class="servico-item" style="background-color: #d3d3d3; padding: 20px; border-radius: 0; flex: 1;">
+        <strong style="font-size: 1.3em;">Condicionantes</strong>
+        <p style="font-size: 1.2em;">A avaliação de imóveis, fundamental para os municípios, é uma atividade complexa e regulamentada, que está presente em vários processos, como plantas de valores, desapropriações, aquisições, locações, entre outros.</p>
+
+      </div>
+
+      <!-- Impacto -->
+      <div class="servico-item" style="background-color: #d3d3d3; padding: 20px; border-radius: 0; flex: 1;">
+        <strong style="font-size: 1.3em;">Impactos</strong>
+        <p style="font-size: 1.2em;">Valores imprecisos podem gerar prejuízos financeiros, desencadear processos judiciais, comprometer a arrecadação municipal e impactar negativamente a imagem da administração pública perante a sociedade.</p>
+      </div>
+
+      <!-- Desafios Municipais -->
+      <div class="servico-item" style="background-color: #d3d3d3; padding: 20px; border-radius: 0; flex: 1;">
+        <strong style="font-size: 1.3em;">Realidades do Municípios</strong>
+        <p style="font-size: 1.2em;">A alta demanda, a falta de profissionais especializados e de sistemas adequados, além da dificuldade em manter um banco de dados atualizado, são alguns dos desafios para a gestão municipal.</p>
       </div>
     </div>
-      
-    <!-- Processo -->
-     <div id="processo" class="container processo-content">
-       <h2>Processo Avaliatório - O que é?</h2>
-       <img src="{{ url_for('static', filename='processo.png') }}" class="img-fluid mx-auto d-block" alt="processo" style="display: block; margin: 20px auto; width: 900px; height: auto;">
-       <p>O fluxo do processo avaliatório necessita uma série de sistemas que normalmente não são integrados.</p>
-       <img src="{{ url_for('static', filename='sistemas.png') }}" class="img-fluid mx-auto d-block" alt="sistemas" style="display: block; margin: 20px auto; width: 900px; height: auto;">
-     </div>
- 
-    <!-- Solução com fundo cinza claro e ocupando toda a largura da página -->
-    <div id="solucao" class="full-width-section">
-        <div class="container">
-          <h2>Solução</h2>
-          <p><strong>Todas as etapas do processo de avaliação, da coleta de dados à elaboração do laudo técnico, em um único lugar.</strong></p>
-          <p><strong>IA</strong></p>
-          <p>Nossa plataforma conta com recursos de inteligência artificial, com o intuito de agilizar os processos, acurar os resultados e manter sempre atualizadas as bases de dados e as soluções.</p>
-        </div>
+
+    <!-- Processo Avaliatório (Agora dentro do Cenario) -->
+    <div class="row" style="margin-top: 40px;">
+      <!-- Coluna Esquerda - Texto -->
+      <div class="col-md-6">
+        <h2 style="color: black; font-weight: bold;">Processo Avaliatório</h2>
+        <p style="font-size: 1.2em;">O processo avaliatório, de forma sucinta, é um conjunto de etapas baseadas na NBR 14.653, necessárias para produzir um Laudo de Avaliação ou um Parecer Técnico.</p>
+        <p style="font-size: 1.2em;">Para cumprir estas etapas são necessárias diversas ações e alguns sistemas como planilhas eletrônicas, sistemas de geo, softwares de avaliação e editores de texto.</p>
       </div>
 
-    <div id="aplicativos" class="container">
-      <h2>Aplicativos</h2>
-      <ul>
-        <li>Dashboard Geospacial: dados de mercado, variáveis e análise exploratória.</li>
-        <li>Regressão Linear: Método Comparativo Direto de Dados de Mercado (NBR 14653-2:2011), com tratamento dos dados pelo método científico (Inferência estatística por meio de Regressão Linear).</li>
-        <li>Método Evolutivo: Método com a avaliação separada do terreno e da construção, conforme a NBR 14653-2:2011.</li>
-        <li>Bens Móveis: Avaliação patrimonial de Órgãos Públicos e Empresas.</li>
-      </ul>
-
-      <div class="app-buttons" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
-
-        <!-- Dashboard Geoespacial -->
-        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-          <a href="https://fschwartzer-geo-dash-tabs.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; width: 100%;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-right: 10px;">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 15.3 0 0 0 0 20"></path>
-            </svg>
-            <span style="flex-grow: 1; text-align: right;">Dashboard Geoespacial</span>
+      <!-- Coluna Direita - Carrossel -->
+      <div class="col-md-6">
+        <div id="carouselProcesso" class="carousel slide" data-ride="carousel" data-interval="5000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="bloco">
+                <h4 class="carrossel-titulo">Identificação do objeto</h4>
+                <ul class="carrossel-explicacao">
+                    <li>Vistoria</li>
+                    <li>Fotos</li>
+                    <li>Entorno</li>
+                    <li>Diagnóstico de mercado</li>
+                </ul>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bloco">
+                <h4 class="carrossel-titulo">Levantamento de dados</h4>
+                <ul class="carrossel-explicacao">
+                    <li>Ofertas</li>
+                    <li>Transações</li>
+                    <li>Consolidação do banco de dados</li>
+                </ul>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bloco">
+                <h4 class="carrossel-titulo">Estipular as premissas para as variáveis do modelo</h4>
+                <ul class="carrossel-explicacao">
+                    <li>Variável dependente - explicada</li>
+                    <li>Variáveis independente - explicativas</li>
+                </ul>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bloco">
+                <h4 class="carrossel-titulo">Tratamento dos dados</h4>
+                <ul class="carrossel-explicacao">
+                    <li>Análise exploratória</li>
+                    <li>Regressão Linear</li>
+                    <li>Tratamento por Fatores</li>
+                </ul>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bloco">
+                <h4 class="carrossel-titulo">Elaboração do documento técnico</h4>
+                <ul class="carrossel-explicacao">
+                    <li>Laudo de Avaliação</li>
+                    <li>Parecer Técnico</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Add remaining carousel items as needed -->
+          </div>
+          <!-- Carousel Controls -->
+          <a class="carousel-control-prev" href="#carouselProcesso" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" style="filter: invert(100%);" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
           </a>
+          <a class="carousel-control-next" href="#carouselProcesso" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" style="filter: invert(100%);" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bloco {
+      background-color: white; /* Fundo branco */
+      color: black;
+      padding: 20px;
+      text-align: center;
+      border: 4px solid #b38b00; /* Borda amarelo ouro */
+      border-radius: 0; /* Cantos retos */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+  }
+  .carrossel-titulo {
+      font-weight: bold;
+      color: #b38b00; /* Título em amarelo ouro */
+      font-size: 2em;
+  }
+  .carrossel-explicacao {
+      font-weight: bold;
+      list-style-type: none;
+      padding: 0;
+      color: black;
+      font-size: 1.6em; /* Explicações em preto */
+  }
+  
+  /* Carrossel do processo avaliatório */
+  #carouselProcesso .carousel-inner {
+      height: 400px; /* Define uma altura fixa apenas para o carrossel do processo */
+  }
+  #carouselProcesso .carousel-item {
+      height: 100%;
+  }
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+      background-color: transparent;
+  }
+  .bloco {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+  }
+</style>
+
+
+<div id="servicos" class="full-width-section" style="background-color: #FFC000; padding: 20px 0;">
+  <div class="container" style="display: flex; justify-content: space-between; gap: 20px;">
+    
+    <!-- Carrossel à esquerda -->
+    <div class="col-md-4">
+      <div id="carouselServicos" class="carousel slide h-100" data-ride="carousel" data-interval="10000">
+        <div class="carousel-inner h-100" style="position: relative;">
+          <!-- Imagem de fundo fixa -->
+          <img src="{{ url_for('static', filename='data.png') }}" alt="Fundo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+          
+          <!-- Primeira frase -->
+          <div class="carousel-item active h-100 d-flex align-items-center justify-content-center" style="visibility: visible;">
+            <div class="carousel-caption d-flex flex-column justify-content-center text-center" style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 10px; width: 80%; z-index: 1;">
+              <h5 style="color: #ffffff; font-weight: bold; font-size: 2em;">Aplicativos de avaliação conforme a NRB 14.643</h5>
+            </div>
+          </div>
+
+          <!-- Segunda frase -->
+          <div class="carousel-item h-100 d-flex align-items-center justify-content-center" style="visibility: hidden;">
+            <div class="carousel-caption d-flex flex-column justify-content-center text-center" style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 10px; width: 80%; z-index: 1;">
+              <h5 style="color: #ffffff; font-weight: bold; font-size: 2em;">Técnicas avançadas de Machine Learning</h5>
+            </div>
+          </div>
+
+          <!-- Terceira frase -->
+          <div class="carousel-item h-100 d-flex align-items-center justify-content-center" style="visibility: hidden;">
+            <div class="carousel-caption d-flex flex-column justify-content-center text-center" style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 10px; width: 80%; z-index: 1;">
+              <h5 style="color: #ffffff; font-weight: bold; font-size: 2em;">Oportunidade de capacitação para avaliadores</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles do Carrossel -->
+        <a class="carousel-control-prev" href="#carouselServicos" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" style="filter: invert(100%);" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselServicos" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" style="filter: invert(100%);" aria-hidden="true"></span>
+          <span class="sr-only">Próximo</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Texto à direita -->
+    <div class="col-md-8">
+      <h2 style="color: black; font-weight: bold;">Serviços</h2>
+      <p style="font-size: 1.2em;">Conhecemos profundamente a área da Engenharia de Avaliações e nos diferenciamos porque somos avaliadores criando soluções para avaliadores. Utilizamos a inteligência artificial, para agilizar os processos, acurar os resultados e manter sempre atualizadas as soluções e as bases de dados.</p>
+      <strong style="font-size: 1.6em; color: white;">Soluções para avaliações</strong>
+      <p style="font-size: 1.2em;">A avalia.se oferece um sistema amplo de soluções para avaliadores, que inclui desde aplicativos que contemplam todas as etapas do processo de avaliação — da coleta de dados à geração do laudo técnico — até modelos avançados para avaliação em massa, utilizando as técnicas mais modernas da ciência de dados.</p>
+      <strong style="font-size: 1.6em; color: white;">Treinamento e capacitação</strong>
+      <p style="font-size: 1.2em;">Oportunizamos capacitação técnica contínua para as equipes municipais, garantindo que estejam sempre atualizadas com as melhores práticas e ferramentas disponíveis no mercado de avaliações imobiliárias.</p>
+    </div>
+  </div>
+</div>
+
+<div id="aplicativos" class="container">
+    <h2 style="color: black; font-weight: bold;">Aplicativos</h2>
+
+    <div class="app-buttons" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+        <!-- Dashboard Geoespacial -->
+        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: black; border: 2px solid #b38b00;">
+            <a href="https://fschwartzer-geo-dash-tabs.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b38b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-bottom: 10px;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 15.3 0 0 0 0 20"></path>
+                </svg>
+                <span style="flex-grow: 1; text-align: center;">Dashboard Geoespacial</span>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: black; font-weight: normal;">Dados de mercado, variáveis e análise exploratória.</p>
+            </a>
         </div>
 
         <!-- Regressão Linear -->
-        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-          <a href="https://davidsb-avalia-se-rl-tabs.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; width: 100%;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-right: 10px;">
-              <line x1="3" y1="21" x2="21" y2="21"></line>
-              <line x1="3" y1="21" x2="3" y2="3"></line>
-              <circle cx="7" cy="17" r="1"></circle>
-              <circle cx="13" cy="10" r="1"></circle>
-              <circle cx="19" cy="6" r="1"></circle>
-              <line x1="3" y1="19" x2="19" y2="6"></line>
-            </svg>
-            <span style="flex-grow: 1; text-align: right;">Regressão Linear</span>
-          </a>
+        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: black; border: 2px solid #b38b00;">
+            <a href="https://davidsb-avalia-se-rl-tabs.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b38b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-bottom: 10px;">
+                    <line x1="3" y1="21" x2="21" y2="21"></line>
+                    <line x1="3" y1="21" x2="3" y2="3"></line>
+                    <circle cx="7" cy="17" r="1"></circle>
+                    <circle cx="13" cy="10" r="1"></circle>
+                    <circle cx="19" cy="6" r="1"></circle>
+                    <line x1="3" y1="19" x2="19" y2="6"></line>
+                </svg>
+                <span style="flex-grow: 1; text-align: center;">Regressão Linear</span>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: black; font-weight: normal;">Método Comparativo Direto de Dados de Mercado (NBR 14653-2:2011), com tratamento dos dados pelo método científico.</p>
+            </a>
         </div>
 
         <!-- Método Evolutivo -->
-        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-          <a href="https://davidsb-avalia-evo.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; width: 100%;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-right: 10px;">
-              <polyline points="6,22 6,8 18,8 18,22"></polyline>
-              <line x1="4" y1="22" x2="20" y2="22"></line>
-              <line x1="9" y1="10" x2="9" y2="10"></line>
-              <line x1="9" y1="14" x2="9" y2="14"></line>
-              <line x1="9" y1="18" x2="9" y2="18"></line>
-              <line x1="15" y1="10" x2="15" y2="10"></line>
-              <line x1="15" y1="14" x2="15" y2="14"></line>
-              <line x1="15" y1="18" x2="15" y2="18"></line>
-            </svg>
-            <span style="flex-grow: 1; text-align: right;">Método Evolutivo</span>
-          </a>
+        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: black; border: 2px solid #b38b00;">
+            <a href="#" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b38b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-bottom: 10px;">
+                    <polyline points="6,22 6,8 18,8 18,22"></polyline>
+                    <line x1="4" y1="22" x2="20" y2="22"></line>
+                    <line x1="9" y1="10" x2="9" y2="10"></line>
+                    <line x1="9" y1="14" x2="9" y2="14"></line>
+                    <line x1="9" y1="18" x2="9" y2="18"></line>
+                    <line x1="15" y1="10" x2="15" y2="10"></line>
+                    <line x1="15" y1="14" x2="15" y2="14"></line>
+                    <line x1="15" y1="18" x2="15" y2="18"></line>
+                </svg>
+                <span style="flex-grow: 1; text-align: center;">Método Evolutivo</span>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: black; font-weight: normal;">Método com a avaliação separada do terreno e da construção, conforme a NBR 14653-2:2011.</p>
+            </a>
         </div>
 
         <!-- Bens Móveis -->
-        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-          <a href="https://fschwartzer-bens-moveis-vision.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; width: 100%;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-right: 10px;">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            <span style="flex-grow: 1; text-align: right;">Bens Móveis</span>
-          </a>
+        <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: black; border: 2px solid #b38b00;">
+            <a href="#" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b38b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-bottom: 10px;">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span style="flex-grow: 1; text-align: center;">Bens Móveis</span>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: black; font-weight: normal;">Avaliação patrimonial de Órgãos Públicos e Empresas.</p>
+             </a>
         </div>
-        <ul>
-        </ul>
-
-      </div>
     </div>
-     
-    <!-- Municípios com fundo cinza claro e largura total -->
-    <div id="municipios" class="full-width-section">
-        <div class="container">
-          <h2>Municípios</h2>
-          <p><strong>Prefeitura Municipal de Lajeado</strong></p>
-          <img src="{{ url_for('static', filename='lajeado.png') }}" alt="lajeado" style="display: block; margin: 20px auto; width: 200px; height: auto;">
-          <p>Em 2023, o avalia.se firmou uma parceria acadêmica com o Município de Lajeado com a intenção de conhecer melhor a realidade do município no que se refere a avaliação de imóveis e propor soluções.</p>
-          <p>Inicialmente, foi feita uma entrevista aberta com o Eng. Franki Bersh, responsável pelas avaliações do município.</p>
-          <p>A partir do diagnóstico, foram disponibilizados os seguintes recursos ao município:</p>
-          <ul>
-            <li>Dados de mercado atualizados e geolocalizados.</li>
-            <li>Variável renda IBGE por meio de uma superfície (processo de krigagem).</li>
-            <li>Aplicativos de cálculo.</li>
-          </ul>
-          <p>Resultados:</p>
-          <ul>
-            <li><strong><em>Comparando o tempo total empregado na elaboração de algumas avaliações, utilizando os aplicativos de avaliações, scrapping de dados de mercado e variável de localização elaborada com interpolação da Renda Bairro fornecida pelo IBGE, com avaliações similares feitas anteriormente sem estas ferramentas, estimo que o tempo médio por laudo reduziu aproximadamente 45%.</em></strong></li>
-          </ul>
-          <p style="text-align: right;"><strong><em>Eng. Franki Bersh (Responsável pelas avaliações no Município de Lajeado/RS).</em></strong></p> 
-        </div>
-      </div>
-      
-     <!-- Serviços -->
-     <!-- Serviços -->
-     <div id="servicos" class="container servicos-content">      
-       <h2>Consultoria</h2>
-       <p style="margin-bottom: 20px;"><strong>Oferecemos uma consultoria especializada para ajudar os municípios a otimizar seus processos de avaliação de imóveis. Além dos aplicativos, disponibilizamos os serviços abaixo com o objetivo de proporcionar uma gestão completa das avaliações.</strong></p>
+    <div style="margin-top: 30px;">
+        <strong style="font-size: 1.3em;">Todos os aplicativos da avalia.se seguem a lógica da "Agilidade" nos processos, "Acurácia" nos resultados e "Atualização" permanente nos sistemas e bases de dados.</strong>
+    </div>
+</div>
 
-       <div class="servicos-columns">
-         <div class="servico-item">
-           <strong>Gestão das Avaliações</strong>
-           <p>Organização sistemática de todo o processo de avaliação, desde o cadastro até a geração de laudos técnicos. Organização, padronização e espacialização de modelos e laudos.</p>
-         </div>
-         <div class="servico-item">
-           <strong>Modelos de Machine Learning</strong>
-           <p>Elaboração de modelos preditivos utilizando técnicas avançadas de Machine Learning, com o objetivo de automatizar e aprimorar a precisão das avaliações de imóveis.</p>
-         </div>
-         <div class="servico-item">
-           <strong>Capacitação e Treinamento</strong>
-           <p>Capacitação técnica contínua para as equipes municipais, garantindo que estejam sempre atualizadas com as melhores práticas e ferramentas disponíveis no mercado de avaliações imobiliárias.</p>
-         </div>
-       </div>
-     </div>
-     
+<!-- Cases com fundo cinza claro e largura total -->
+<div id="cases" class="full-width-section" style="background-color: #f0f0f0; padding: 0 0 40px 0;"> <!-- Removido o padding superior -->
+    <div class="container">
+        <h2 style="color: black; font-weight: bold; margin-top: 0;">Cases</h2> <!-- Removido o margin-top -->
+        <img src="{{ url_for('static', filename='lajeado.png') }}" alt="lajeado" style="display: block; margin: 20px auto; width: 200px; height: auto;">
+        <p style="font-size: 1.2em;">Em 2023, a avalia.se firmou uma parceria acadêmica com o Município de Lajeado com a intenção de conhecer melhor a realidade do município no que se refere a avaliação de imóveis e a partir daí propor soluções.</p>
+        <p style="font-size: 1.2em;">Lajeado, município do Vale do Taquari, possui uma área 91.231 km² e uma população de aproximadamente 90 mil habitantes. Em relação ao Produto Interno Bruto (PIB), Lajeado tem uma projeção de crescimento de 11% para 2024, o que é maior do que a média nacional de 2%.</p>
+        
+        <div class="servicos-columns" style="display: flex; justify-content: space-between; gap: 20px;">
+            <!-- Diagnóstico -->
+            <div class="servico-item" style="background-color: #d3d3d3; padding: 20px; border-radius: 0; flex: 1;">
+                <strong style="font-size: 1.3em;">Diagnóstico</strong>
+                <p style="font-size: 1.2em;">Poucos técnicos capacitados</p>
+                <p style="font-size: 1.2em;">Dificuldade em manter os bancos de dados atualizados</p>
+                <p style="font-size: 1.2em;">Dificuldades na produzir modelos estatísticos</p>
+                <p style="font-size: 1.2em;">Tempo excessivo para elaboração de um laudo</p>
+            </div>
+
+            <!-- Soluções -->
+            <div class="servico-item" style="background-color: #d3d3d3; padding: 20px; border-radius: 0; flex: 1;">
+                <strong style="font-size: 1.3em;">Soluções</strong>
+                <p style="font-size: 1.2em;">Fornecimento de dados de mercado atualizados e geolocalizados</p>
+                <p style="font-size: 1.2em;">Criação de variáveis explicativas (superfície de renda IBGE pelo processo de krigagem)</p>
+                <!-- Adicione a imagem da krigagem aqui -->           
+                <p style="font-size: 1.2em;">Disponibilização de aplicativos de cálculo (Evolutivo, Regressão Linear e Fatores)</p>
+            </div>
+
+            <!-- Resultados -->
+            <div class="servico-item" style="background-color: #d3d3d3; padding: 20px; border-radius: 0; flex: 1;">
+                <strong style="font-size: 1.3em;">Resultados</strong>
+                <p style="font-size: 1.2em;">Redução de 45% no tempo de elaboração das avaliações</p>
+                <p style="font-size: 1.2em;">Estudo demonstrando uma redução de custo mensal na ordem de 60% com comissões de servidores para avaliações para fins patrimoniais</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+      
     <!-- Barra preta no rodapé, visível no final da rolagem -->
     <div class="footer full-width-section" style="background-color: #000000; padding: 0px;">
       <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
@@ -420,15 +583,6 @@ html_template = """
         </div>
       </div>
     </div>
-
-    <style>
-      /* Media query para esconder o logotipo em telas pequenas */
-      @media (max-width: 480px) {
-        .logo-container img {
-          display: none;
-        }
-      }
-    </style>
 
     </div>
 
