@@ -496,7 +496,7 @@ html_template = """
 
         <!-- Método Evolutivo -->
         <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: black; border: 2px solid #b38b00;">
-            <a href="#" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <a href="https://davidsb-avalia-evo.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b38b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-bottom: 10px;">
                     <polyline points="6,22 6,8 18,8 18,22"></polyline>
                     <line x1="4" y1="22" x2="20" y2="22"></line>
@@ -514,7 +514,7 @@ html_template = """
 
         <!-- Bens Móveis -->
         <div class="caixa-preta" style="flex: 1 1 calc(25% - 20px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; background-color: white; color: black; border: 2px solid #b38b00;">
-            <a href="#" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <a href="https://fschwartzer-bens-moveis-vision.hf.space" target="_blank" class="app-button" style="text-decoration: none; color: black; font-weight: bold; display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b38b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon" style="width: 50px; height: 50px; margin-bottom: 10px;">
                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                     <line x1="8" y1="21" x2="16" y2="21"></line>
