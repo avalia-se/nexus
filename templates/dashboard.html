@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avalia.se</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFC000; /* Amarelo ouro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h2 {
+            font-size: 4rem;
+            margin-bottom: 40px;
+        }
+        .aval {
+            color: black;
+        }
+        .ia {
+            color: white;
+        }
+        .se {
+            color: black;
+        }
+        .app-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .caixa-preta {
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .caixa-preta:hover {
+            transform: scale(1.05);
+        }
+        .app-button {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2><span class="aval">aval</span><span class="ia">ia</span><span class="se">.se</span></h2>
+
+    <div class="app-container">
+        <!-- Dashboard Geoespacial -->
+        <div class="caixa-preta">
+            <a href="https://fschwartzer-geo-dash-tabs.hf.space" target="_blank" class="app-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"></path>
+                </svg>
+                <span>Dashboard Geoespacial</span>
+            </a>
+        </div>
+
+        <!-- Regressão Linear -->
+        <div class="caixa-preta">
+            <a href="https://davidsb-avalia-se-rl-tabs.hf.space" target="_blank" class="app-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
+                    <line x1="3" y1="21" x2="21" y2="21"></line>
+                    <line x1="3" y1="21" x2="3" y2="3"></line>
+                    <circle cx="7" cy="17" r="1"></circle>
+                    <circle cx="13" cy="10" r="1"></circle>
+                    <circle cx="19" cy="6" r="1"></circle>
+                    <line x1="3" y1="19" x2="19" y2="6"></line>
+                </svg>
+                <span>Regressão Linear</span>
+            </a>
+        </div>
+
+        <!-- Método Evolutivo -->
+        <div class="caixa-preta">
+            <a href="https://davidsb-avalia-evo.hf.space" target="_blank" class="app-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
+                    <polyline points="6,22 6,8 18,8 18,22"></polyline>
+                    <line x1="4" y1="22" x2="20" y2="22"></line>
+                    <line x1="9" y1="10" x2="9" y2="10"></line>
+                    <line x1="9" y1="14" x2="9" y2="14"></line>
+                    <line x1="9" y1="18" x2="9" y2="18"></line>
+                    <line x1="15" y1="10" x2="15" y2="10"></line>
+                    <line x1="15" y1="14" x2="15" y2="14"></line>
+                    <line x1="15" y1="18" x2="15" y2="18"></line>
+                </svg>
+                <span>Método Evolutivo</span>
+            </a>
+        </div>
+
+        <!-- Bens Móveis -->
+        <div class="caixa-preta">
+            <a href="https://fschwartzer-bens-moveis-vision.hf.space" target="_blank" class="app-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-icon">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>Bens Móveis</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
