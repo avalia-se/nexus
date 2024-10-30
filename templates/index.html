@@ -228,36 +228,42 @@
         }
 
         @media (max-width: 768px) {
+            #inicio .black-section::before {
+                content: ""; /* Cria uma linha invisível antes do primeiro item */
+                display: block;
+                height: 20px; /* Ajuste a altura para o espaçamento desejado */
+                width: 100%; /* Largura da linha fictícia */
+                background-color: transparent; /* Linha invisível */
+            }
+        
             #inicio .black-section {
                 height: auto;
                 padding: 10px 0;
                 flex-direction: column;
                 justify-content: center;
             }
-
+        
             #inicio .black-section .text-item {
                 width: 100%; /* Garante que os itens ocupem toda a linha */
-                margin-top: 20px; 
                 margin: 20px 0; /* Ajuste o espaçamento entre os blocos de texto */
                 text-align: center;
                 position: relative;
             }
-
+        
             #inicio .black-section .text-item::after {
                 content: ""; /* Adiciona um espaço fictício (linha invisível) */
-                display: block; /* Para aumentar o espaço sobre "Servidores" */
+                display: block;
                 height: 2px; /* Altura da linha invisível */
                 margin: 20px 0; /* Espaçamento entre o fim de um bloco e o próximo título */
                 width: 50%; /* Largura da linha fictícia */
                 background-color: transparent; /* A linha é invisível */
             }
-
+        
             .black-section .sub-text {
                 margin-top: 5px; /* Espaçamento entre o título e a frase */
                 margin-bottom: 0;
             }
         }
-
 
         /* ESTILO PARA O CONTAINER CENÁRIO */
         /* Container com imagem de fundo e overlay */
