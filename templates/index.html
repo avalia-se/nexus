@@ -1097,12 +1097,13 @@
                 behavior: 'smooth'
             });
         }
-
+        
         // Configuração dos links de menu para rolar corretamente
         document.querySelectorAll('.menu li a').forEach(link => {
             link.onclick = function(e) {
+                const targetId = this.getAttribute('href').substring(1);
+                if (targetId === 'login') return;  // Ignora o redirecionamento de rolagem
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1); // Remove o # do ID
                 scrollToSection(targetId);
             };
         });
