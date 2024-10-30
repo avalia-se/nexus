@@ -311,7 +311,7 @@
 
         /* Estilo do carrossel */
         #cenario .carousel {
-            width: 50%;
+            width: 50%; /* Largura padrão para telas maiores */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -321,11 +321,11 @@
         }
 
         #cenario .carousel .frase {
-            padding: 20px; /* Reduz o padding */
+            padding: 20px;
             color: #000;
-            font-size: 1.2rem; /* Diminui o tamanho da fonte */
+            font-size: 1.2rem; /* Tamanho de fonte padrão */
             font-weight: bold;
-            line-height: 1.2; /* Reduz o espaçamento entre linhas */
+            line-height: 1.2;
             text-align: center;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
@@ -379,23 +379,27 @@
             }
         }
 
-        /* Ajustes para smartphones */
-        @media (max-width: 768px) {
+        /* Ajustes para notebooks */
+        @media (min-width: 769px) and (max-width: 1024px) {
             #cenario {
-                height: auto; /* Altura automática para evitar espaços grandes */
-                min-height: 30vh; /* Definir uma altura mínima menor em celulares */
+                height: 45vh; /* Altura ajustada para notebooks */
             }
 
             #cenario .carousel .frase {
-                font-size: 1.4rem; /* Aumentar o tamanho da fonte para melhor legibilidade */
-            }
-
-            #cenario .carousel .prev,
-            #cenario .carousel .next {
-                font-size: 18px; /* Tamanho das setas ajustado para telas menores */
+                font-size: 1.6rem; /* Tamanho da fonte ajustado para notebooks */
             }
         }
 
+        /* Ajuste para dispositivos móveis */
+        @media (max-width: 768px) {
+            #cenario .carousel {
+                width: 95%; /* Aumenta a largura para 95% em dispositivos móveis */
+            }
+
+            #cenario .carousel .frase {
+                font-size: 1.3rem; /* Reduz levemente o tamanho da fonte */
+            }
+        }
 
         /* ESTILO PARA O CONTAINER SERVIÇOS */
         #servicos {
@@ -704,24 +708,20 @@
             }
         }
 
-         /* ESTILO PARA O AS FRASES DINÂMICAS */
+        /* ESTILO PARA O AS FRASES DINÂMICAS */
         .typewriter-text {
             font-size: 48px;
             font-weight: bold;
             color: #333;
             white-space: normal;
-            /* Permite a quebra de linha */
             word-wrap: break-word;
             overflow: hidden;
             border-right: 6px solid #FFC000;
-            /* Cursor amarelo */
             animation: blinkCursor 0.7s steps(40) infinite normal;
             margin-left: 10vw;
             margin-right: 10vw;
             display: inline-block;
-            /* Permite que o cursor se mova para a nova linha */
             line-height: 1.2;
-            /* Mantém a distância adequada entre as linhas */
         }
 
         /* Animação para o cursor */
@@ -732,6 +732,15 @@
 
             to {
                 border-right-color: transparent;
+            }
+        }
+
+        /* Reduz o tamanho da fonte em dispositivos móveis */
+        @media (max-width: 768px) {
+            #avalia-se .typewriter-text {
+                font-size: 35px !important; /* Usa !important para garantir a aplicação */
+                margin-left: 5vw; /* Ajusta as margens para dispositivos móveis */
+                margin-right: 5vw;
             }
         }
     </style>
