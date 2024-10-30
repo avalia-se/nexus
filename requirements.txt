@@ -10,3 +10,4 @@ xlsxwriter
 ydata-profiling
 flask
 gunicorn
+werkzeug
