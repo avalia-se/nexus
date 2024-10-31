@@ -404,7 +404,7 @@
         /* Ajuste para dispositivos móveis */
         @media (max-width: 768px) {
             #cenario .carousel {
-                width: 96%; /* Aumenta a largura para 95% em dispositivos móveis */
+                width: 95%; /* Aumenta a largura para 95% em dispositivos móveis */
             }
 
             #cenario .carousel .frase {
@@ -550,7 +550,7 @@
                 height: auto;
                 align-items: center; /* Centraliza o conteúdo */
                 padding: 20px 10px; /* Ajuste o padding para evitar espaços laterais */
-                padding-top: 120px; /* Espaço extra para evitar corte do título em smartphones */
+                padding-top: 40px; /* Espaço extra para evitar corte do título em smartphones */
             }
 
             .servicos-content {
@@ -727,7 +727,7 @@
             white-space: normal;
             word-wrap: break-word;
             overflow: hidden;
-            border-right: 6px solid #FFC000;
+            border-right: 6px solid #FFFFFF;
             animation: blinkCursor 0.7s steps(40) infinite normal;
             margin-left: 10vw;
             margin-right: 10vw;
@@ -738,7 +738,7 @@
         /* Animação para o cursor */
         @keyframes blinkCursor {
             from {
-                border-right-color: #000;
+                border-right-color: #FFFFFF;
             }
 
             to {
@@ -1104,26 +1104,29 @@
             menu.classList.toggle('active');
         }
 
-        
-        // Função para rolar até a seção considerando a altura do menu fixo
+        // Função para rolar até a seção considerando a altura do menu fixo e fechar o menu hambúrguer
         function scrollToSection(sectionId) {
-            if (sectionId === "login") return;
             const element = document.getElementById(sectionId);
             const offset = 60; // altura do menu fixo, ajuste conforme necessário
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+
+            // Fecha o menu quando um link é clicado em dispositivos móveis
+            const menu = document.getElementById('menu');
+            if (menu.classList.contains('active')) {
+                toggleMenu();
+            }
 
             window.scrollTo({
                 top: elementPosition - offset,
                 behavior: 'smooth'
             });
         }
-        
-        // Configuração dos links de menu para rolar corretamente
+
+        // Configuração dos links de menu para rolar corretamente e fechar o menu
         document.querySelectorAll('.menu li a').forEach(link => {
             link.onclick = function(e) {
-                const targetId = this.getAttribute('href').substring(1);
-                if (targetId === 'login') return;  // Ignora o redirecionamento de rolagem
                 e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1); // Remove o # do ID
                 scrollToSection(targetId);
             };
         });
