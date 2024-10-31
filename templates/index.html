@@ -213,6 +213,21 @@
             margin-bottom: 0; /* Remove espaço extra abaixo da frase */
         }
 
+        @media (min-width: 1025px) {
+            /* Ajusta o padding-top da black-section e aumenta o tamanho da fonte dos textos principais e subtextos em telas grandes */
+            #inicio .black-section {
+                padding-top: 10px; /* Diminui o padding-top para telas grandes */
+            }
+
+            #inicio .black-section .text-item {
+                font-size: 2.5rem; /* Aumenta o tamanho da fonte para Servidores, Gestores e Cidadãos em telas grandes */
+            }
+
+            #inicio .black-section .sub-text {
+                font-size: 1.2rem; /* Aumenta o tamanho da fonte dos subtextos em telas grandes */
+            }
+        }
+        
         @media (min-width: 769px) and (max-width: 1024px) {
             #inicio .black-section {
                 height: auto; /* Ajusta automaticamente a altura com base no conteúdo */
