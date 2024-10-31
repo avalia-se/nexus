@@ -580,8 +580,7 @@
                 padding: 10px 15px; /* Ajuste o padding para evitar espaços laterais */
             }
         }
-
-
+        
         /* ESTILO PARA O CONTAINER PLANOS */
         #planos {
             background-color: #FFFFFF;
@@ -595,8 +594,6 @@
             margin: 0 auto;
             box-sizing: border-box;
             margin-bottom: 40px; /* Espaço inferior */
-            max-height: 80vh; /* Limita a altura para evitar invasão do container Contato */
-            overflow-y: auto; /* Adiciona rolagem vertical quando o conteúdo ultrapassa a altura */
         }
 
         /* Layout Flexível para as Caixas de Plano */
@@ -648,7 +645,12 @@
         }
 
         /* Responsividade para dispositivos móveis */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) { /* Ajuste para notebooks e dispositivos menores */
+            #planos {
+                max-height: none; /* Remove a altura máxima */
+                overflow-y: visible; /* Remove o overflow */
+                padding-bottom: 20px; /* Adiciona um pouco de padding no final */
+            }
             .planos-container {
                 flex-direction: column; /* Empilha as caixas verticalmente */
                 align-items: center; /* Centraliza as caixas dentro do container */
