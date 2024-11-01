@@ -1142,6 +1142,7 @@
         // Configuração dos links de menu para rolar corretamente e fechar o menu
         document.querySelectorAll('.menu li a').forEach(link => {
             link.onclick = function(e) {
+                if (targetId === 'login') return; 
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1); // Remove o # do ID
                 scrollToSection(targetId);
