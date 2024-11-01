@@ -1123,6 +1123,7 @@
 
         // Função para rolar até a seção considerando a altura do menu fixo e fechar o menu hambúrguer
         function scrollToSection(sectionId) {
+            if (sectionId === "login") return;
             const element = document.getElementById(sectionId);
             const offset = 60; // altura do menu fixo, ajuste conforme necessário
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
