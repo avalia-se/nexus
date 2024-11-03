@@ -984,7 +984,7 @@
                 <div class="plano-preco">
                     <p>Mensal: a partir de R$ 249,90 *</p>
                     <p>Anual: a partir de R$ 2.499,90 *</p>
-                    <p>_____________________________</p>
+                    <p>___________________________</p>
                     <p>* Depende do porte do município (nº de habitantes) e da necessidade de dados</p>
                 </div>
             </div>
@@ -1000,7 +1000,7 @@
                 <!-- Valores dos planos -->
                 <div class="plano-preco">
                     <p>Sob consulta</p>
-                    <p>_____________________________</p>
+                    <p>___________________________</p>
                     <p>Serviços que dependem de uma análise das necessidades do cliente</p>
                 </div>
             </div>
@@ -1143,12 +1143,20 @@
         // Configuração dos links de menu para rolar corretamente e fechar o menu
         document.querySelectorAll('.menu li a').forEach(link => {
             link.onclick = function(e) {
-                if (targetId === 'login') return; 
-                e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1); // Remove o # do ID
+        
+                // Verifica se é o link de login
+                if (targetId === 'login') {
+                    // Permite que o link de login funcione sem interferir no recolhimento do menu
+                    return;
+                }
+                
+                e.preventDefault();
                 scrollToSection(targetId);
             };
         });
+
+
     </script>
 
 
