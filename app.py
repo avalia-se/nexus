@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.serving import run_simple
+import subprocess
+import gradio as gr
 
 app = Flask(__name__)
 
@@ -50,7 +52,18 @@ def register():
 # Dashboard after login
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    # Execute the external Python script
+    try:
+        # Path to your script (adjust the path as needed)
+        script_path = r"aplicativo.py"
+        
+        # Run the script using subprocess
+        subprocess.Popen(["python", script_path])
+        
+        # Optionally, redirect to a confirmation page or display a message
+        return "Aplicativo iniciado com sucesso!"
+    except Exception as e:
+        return f"Erro ao iniciar o aplicativo: {str(e)}"
 
 
 if __name__ == '__main__':
