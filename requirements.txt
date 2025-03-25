@@ -17,7 +17,7 @@ fsspec==2025.3.0
 folium
 flask
 googlemaps==4.10.0
-gradio==5.12.0
+gradio====3.49.0
 gradio_client==1.5.4
 gunicorn
 h11==0.14.0
