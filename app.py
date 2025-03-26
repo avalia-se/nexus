@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.serving import run_simple
 import subprocess
 import gradio as gr
+from aplicativo import create_gradio_app  # Importe a função que cria o app Gradio
+import sys
 
 app = Flask(__name__)
 
@@ -52,9 +54,14 @@ def register():
 # Dashboard after login
 @app.route('/dashboard')
 def dashboard():
-    # Mount the Gradio app to Flask
-    app = gr.mount_gradio_app(app, gradio_app, path="/gradio")
-    return redirect(url_for('gradio'))  # Redireciona para a interface Gradio
+    # Obtém o caminho do interpretador Python atual
+    python_executable = sys.executable
+    
+    # Start the Gradio app as a subprocess using the correct Python interpreter
+    subprocess.Popen([python_executable, "aplicativo.py"])
+    
+    # Redireciona para a URL do Gradio
+    return "Para acesso à plataforma, clique <a href='http://localhost:7860'>aqui</a>."
 
 
 if __name__ == '__main__':
