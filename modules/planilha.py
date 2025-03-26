@@ -2,6 +2,7 @@ import gradio as gr
 import pandas as pd
 from modules.utils import create_new_dataframe_with_index_and_value_unit  # Importe a função necessária
 from .shared_state import state  # Importa o estado compartilhado
+import os
 
 # Variável global para armazenar o DataFrame original
 original_df = None
@@ -123,7 +124,7 @@ def finalize_dataframe(file, sheet_name, selected_columns, first_var, operation,
         df.insert(0, 'Índice', range(1, len(df) + 1))
 
     # Salvando DataFrame filtrado em arquivo CSV
-    file_path = "Planilha_final.xlsx"
+    file_path = os.path.join(os.getcwd(), 'dados', 'Planilha_final.xlsx')
     df.to_excel(file_path)
 
     return df, file_path
