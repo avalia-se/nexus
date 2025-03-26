@@ -17,7 +17,7 @@ except locale.Error:
     locale.setlocale(locale.LC_ALL, 'C')
 
 # Load the data
-data_path = 'data_2.xlsx'
+data_path = 'dados/data_2.xlsx'
 df = pd.read_excel(data_path, sheet_name='Planilha1')
 # Garantir que a coluna "Data" seja do tipo datetime
 df['Data'] = pd.to_datetime(df['Data'], errors='coerce')
@@ -176,7 +176,7 @@ def unified_action(selected_types, selected_bairros, selected_fonte, min_atotal,
                       f"Mínimo do Valor: {locale.format_string('%.2f', filtered_df['Valor'].min(), grouping=True)}")
 
     # Salvando DataFrame filtrado em arquivo CSV
-    file_path = "dados_filtrados.xlsx"
+    file_path = "dados/dados_filtrados.xlsx"
     filtered_df.to_excel(file_path)
 
     return fig, stats_text, filtered_df, file_path
