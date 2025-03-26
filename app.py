@@ -52,18 +52,9 @@ def register():
 # Dashboard after login
 @app.route('/dashboard')
 def dashboard():
-    # Execute the external Python script
-    try:
-        # Path to your script (adjust the path as needed)
-        script_path = r"aplicativo.py"
-        
-        # Run the script using subprocess
-        subprocess.Popen(["python", script_path])
-        
-        # Optionally, redirect to a confirmation page or display a message
-        return "Aplicativo iniciado com sucesso!"
-    except Exception as e:
-        return f"Erro ao iniciar o aplicativo: {str(e)}"
+    # Mount the Gradio app to Flask
+    app = gr.mount_gradio_app(app, gradio_app, path="/gradio")
+    return redirect(url_for('gradio'))  # Redireciona para a interface Gradio
 
 
 if __name__ == '__main__':
