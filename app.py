@@ -51,17 +51,10 @@ def register():
     
     return render_template('register.html')
 
-# Dashboard after login
 @app.route('/dashboard')
 def dashboard():
-    # Obtém o caminho do interpretador Python atual
-    python_executable = sys.executable
-    
-    # Start the Gradio app as a subprocess using the correct Python interpreter
-    subprocess.Popen([python_executable, "aplicativo.py"])
-    
-    # Redireciona para a URL do Gradio
-    return "Para acesso à plataforma, clique <a href='http://localhost:7860'>aqui</a>."
+    # Redireciona para a URL externa do Gradio
+    return redirect("https://avalia-se-app.hf.space")
 
 
 if __name__ == '__main__':
