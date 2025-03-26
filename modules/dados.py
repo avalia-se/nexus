@@ -6,6 +6,7 @@ from math import radians, sin, cos, sqrt, atan2
 import googlemaps
 import locale
 from .shared_state import state  # Importa o estado compartilhado
+import os
 
 # Inicializando o cliente Google Maps com a chave da API
 gmaps = googlemaps.Client(key='AIzaSyDoJ6C7NE2CHqFcaHTnhreOfgJeTk4uSH0')
@@ -17,7 +18,7 @@ except locale.Error:
     locale.setlocale(locale.LC_ALL, 'C')
 
 # Load the data
-data_path = 'dados/data_2.xlsx'
+data_path = os.path.join(os.getcwd(), 'dados', 'data_2.xlsx')
 df = pd.read_excel(data_path, sheet_name='Planilha1')
 # Garantir que a coluna "Data" seja do tipo datetime
 df['Data'] = pd.to_datetime(df['Data'], errors='coerce')
@@ -176,7 +177,7 @@ def unified_action(selected_types, selected_bairros, selected_fonte, min_atotal,
                       f"Mínimo do Valor: {locale.format_string('%.2f', filtered_df['Valor'].min(), grouping=True)}")
 
     # Salvando DataFrame filtrado em arquivo CSV
-    file_path = "dados/dados_filtrados.xlsx"
+    file_path = os.path.join(os.getcwd(), 'dados', 'dados_filtrados.xlsx')
     filtered_df.to_excel(file_path)
 
     return fig, stats_text, filtered_df, file_path
