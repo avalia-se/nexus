@@ -90,7 +90,7 @@ def create_gradio_app():
 
     return demo
 
-# Se este arquivo for executado diretamente, inicie o Gradio
 if __name__ == "__main__":
     app = create_gradio_app()
-    app.launch()
+    # Use server_port=None para evitar conflitos com o Flask
+    app.launch(server_name="0.0.0.0", server_port=None)
