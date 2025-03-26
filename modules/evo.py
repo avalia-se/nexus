@@ -6,13 +6,15 @@ from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from num2words import num2words
 import warnings  # Somente se você realmente quer suprimir avisos
+import os
 
 
 # Suprimir todos os avisos durante a execuÃ§Ã£o do script
 warnings.filterwarnings("ignore")
 
 # Calcular a data mais recente do CUB fora da funÃ§Ã£o
-df_cub = pd.read_excel('dados/TABELAS_evo.xlsx', sheet_name='CUB')
+evo_path = os.path.join(os.getcwd(), 'dados', 'TABELAS_evo.xlsx')
+df_cub = pd.read_excel(evo_path, sheet_name='CUB')
 ultimo_cub = df_cub.columns[-1]
 
 #funÃ§Ã£o para escrever por extenso o valor atribuÃ­do
@@ -39,10 +41,11 @@ def calcular_valor_imovel(
                           fc=1, fc_just="Arbitrado"):
 
     # Carregar dados dos arquivos Excel
-    df_cub = pd.read_excel('dados/TABELAS_evo.xlsx', sheet_name='CUB')
-    df_vida = pd.read_excel('dados/TABELAS_evo.xlsx', sheet_name='VUTIL')
-    df_dep = pd.read_excel('dados/TABELAS_evo.xlsx', sheet_name='DEP')
-    df_estado_cons = pd.read_excel('dados/TABELAS_evo.xlsx', sheet_name='CONS')
+                              
+    df_cub = pd.read_excel(evo_path, sheet_name='CUB')
+    df_vida = pd.read_excel(evo_path, sheet_name='VUTIL')
+    df_dep = pd.read_excel(evo_path, sheet_name='DEP')
+    df_estado_cons = pd.read_excel(evo_path, sheet_name='CONS')
 
     # Converter datas de entrada
     if data_refer_str is None or data_refer_str == "":
