@@ -91,6 +91,6 @@ with gr.Blocks(theme=theme, css="""
 
 # Executa o app
 if __name__ == "__main__":
-    app.launch(share=True)
+    app.launch('localhost', 0000, aplicativo)
 
 
