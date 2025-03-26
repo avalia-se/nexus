@@ -10,8 +10,11 @@ from .shared_state import state  # Importa o estado compartilhado
 # Inicializando o cliente Google Maps com a chave da API
 gmaps = googlemaps.Client(key='AIzaSyDoJ6C7NE2CHqFcaHTnhreOfgJeTk4uSH0')
 
-# Configurando o locale para português do Brasil
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+try:
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+except locale.Error:
+    # Fallback para uma localidade padrão (ex.: 'C' ou 'en_US.UTF-8')
+    locale.setlocale(locale.LC_ALL, 'C')
 
 # Load the data
 data_path = 'data_2.xlsx'
