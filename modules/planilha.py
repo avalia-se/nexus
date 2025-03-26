@@ -123,7 +123,7 @@ def finalize_dataframe(file, sheet_name, selected_columns, first_var, operation,
         df.insert(0, 'Índice', range(1, len(df) + 1))
 
     # Salvando DataFrame filtrado em arquivo CSV
-    file_path = "dados/Planilha_final.xlsx"
+    file_path = "Planilha_final.xlsx"
     df.to_excel(file_path)
 
     return df, file_path
