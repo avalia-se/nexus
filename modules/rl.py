@@ -12,8 +12,11 @@ import joblib
 import os
 import locale
 
-# Configurar o locale para o Brasil
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+try:
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+except locale.Error:
+    # Fallback para uma localidade padrão (ex.: 'C' ou 'en_US.UTF-8')
+    locale.setlocale(locale.LC_ALL, 'C')
 
 # Função para carregar a planilha de dados
 def carregar_planilha(file):
